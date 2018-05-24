@@ -59,6 +59,7 @@ class MainHandler(webapp2.RequestHandler):
 			
 		
 #		links=Link()
+		self.response.headers.add_header('Access-Control-Allow-Origin', '*')
 		self.response.out.write(json.dumps({'records':count,'page':(page+1),'total':int((count+rows-1)/rows),'rows': [p.to_dict() for p in links]}));
 		return	
 
