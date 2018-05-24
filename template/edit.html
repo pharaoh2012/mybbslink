@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html> 
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>新增或编辑网站设置</title>
+	<style>
+	#tb input 
+	{
+	width:90%
+	}
+	</style>
+</head>
+<body>
+<form name="formedit" id='formedit' action="/edit?id={{ id }}" method="post">
+	
+
+
+
+
+<table id='tb'>
+<tr>
+<th style='width:20%'>属性</th>
+<th style='width:80%'>值</th>
+</tr>
+
+<tr><td>名称</td><td><input name='name' required placeholder="网站的名称" value='{{ web.name }}' /></td></tr>
+<tr><td>网址</td><td><input name='url' type='url' onchange='urlchange(this);' required placeholder="网站的网址" value='{{ web.url }}' /></td></tr>
+<tr><td>域名</td><td><input name='domain' readonly="true" required value='{{ web.domain }}' /></td></tr>
+<tr><td>编码(<a href="#" onclick='setencode("utf-8");return false;'>utf-8</a>,<a  href="#" onclick='setencode("gb2312");return false;'>gb2312</a>)</td><td><input name='encode' required value='{% if web.encode %}{{ web.encode }}{% else %}utf-8{% endif %}' /></td></tr>
+<tr><td>regex</td><td><input name='regex' required value='{{ web.regex }}' /></td></tr>
+<tr><td>url模版</td><td><input name='urlfull' required value='{{ web.urlfull }}' /></td></tr>
+<tr><td>更新周期(分钟)</td><td><input type='number' min='5' name='interval' required value='{{ web.interval }}' />
+<br />
+<a href="#" onclick='setinterval(10);return false;'>10分钟</a>
+<a href="#" onclick='setinterval(20);return false;'>20分钟</a>
+<a href="#" onclick='setinterval(30);return false;'>30分钟</a>
+<a href="#" onclick='setinterval(60);return false;'>1小时</a>
+<a href="#" onclick='setinterval(300);return false;'>5小时</a>
+<a href="#" onclick='setinterval(720);return false;'>12小时</a>
+<a href="#" onclick='setinterval(1440);return false;'>24小时</a>
+<a href="#" onclick='setinterval(2880);return false;'>48小时</a>
+</td></tr>
+<tr><td>标题最小长度</td><td><input type='number' min='0' max='20'  name='mintitle' required value='{{ web.mintitle }}' /></td></tr>
+<tr><td>前缀</td><td><input name='type' value='{{ web.type }}' /></td></tr>
+<tr><td>是否需要取消换行</td><td><input name='replace' type='checkbox' {% if web.replace %}checked='true'{% endif %} /></td></tr>
+<tr><td>数据保留天数</td><td><input type='number' min='1' max='60'  name='deletedate' required value='{{ web.deletedate }}' /></td></tr>
+
+</table>
+
+{% if id > 0 %}
+<input type="submit" name='option' value='save'  />
+{% endif %}
+<input type="submit" name='option' value='add'  />
+
+
+<input type="submit" name='option' value='test' />
+
+<div>
+{% if links %}
+<ol>
+    {% for link in links %}
+        <li><a href='{{ link.url }}' target='_blank'>{{ link.title }}</a></li>
+    {% else %}
+    	<span style='color:red'>没有对应的链接</span>        
+    {% endfor %}
+</ol>
+{% endif %}    
+{% if error %}
+
+  <span style='color:red'>  {{ error }}</span>
+{% endif %}   
+</div>
+</form>
+
+<script type="text/javascript" >
+	function submitit (type) {
+		document.getElementById('option').value=type;
+		document.getElementById("formedit").submit();
+		
+	}
+	function setinterval(v)
+	{
+		document.getElementsByName('interval')[0].value=v;
+	}
+	
+	function setencode(code)
+	{
+		document.getElementsByName('encode')[0].value=code;
+	}	
+	function urlchange(o)
+	{
+		var reg=/^https?:\/\/([A-Za-z0-9]+\.[^\/]+)\/?/
+		var r = reg.exec(o.value)
+		if(r)
+		{
+			document.getElementsByName('domain')[0].value=r[1];
+		}
+	//	console.info(r);
+	}
+</script>
+</body>
+</html>

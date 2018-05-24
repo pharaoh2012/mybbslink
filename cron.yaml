@@ -1,0 +1,4 @@
+cron:
+- description: get url links
+  url: /get?auto=true
+  schedule: every 1 minutes

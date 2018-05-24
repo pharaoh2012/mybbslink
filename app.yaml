@@ -1,0 +1,54 @@
+application: mybbslink
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: yes
+
+handlers:
+- url: /favicon\.ico
+  static_files: favicon.ico
+  upload: favicon\.ico
+
+- url: /s
+  static_dir: s
+
+- url: /edit.*
+  script: edit.app
+
+- url: /get.*
+  script: geturl.app
+
+- url: /json.*
+  script: getjson.app
+
+- url: /weblist
+  static_files: template/list.html
+  upload: template/list\.html
+
+- url: /webjson.*
+  script: webjson.app
+
+- url: /mark.*
+  script: mark.app
+
+- url: /click.*
+  script: click.app
+
+- url: /init.*
+  script: init.app
+
+- url: /deleteweb.*
+  script: deleteweb.app
+
+- url: /deletelink.*
+  script: deletelink.app
+
+- url: .*
+  script: main.app
+
+libraries:
+- name: webapp2
+  version: "2.5.1"
+
+- name: jinja2
+  version: "2.6"

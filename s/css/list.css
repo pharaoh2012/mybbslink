@@ -1,0 +1,119 @@
+﻿html, body {
+    padding: 0;
+    margin:0;
+    font-size: 12px;
+    min-width:300px;
+    min-height:300px;
+    
+}
+body
+{
+    padding:5px;
+}
+
+#ui-datepicker-div
+{ 
+    z-index:5000;
+                    
+   font-family:Verdana, Lucida Grande, Lucida Sans, Arial, sans-serif;
+   font-size: 11px;
+}
+.ui-datepicker SELECT.ui-datepicker-month,.ui-datepicker .ui-datepicker-title SELECT.ui-datepicker-year
+{
+    width:48%;
+    float:none;
+}
+
+.ui-widget { font-family:Verdana, Lucida Grande, Lucida Sans, Arial, sans-serif; font-size: 12px; }
+.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button { font-family:Verdana, Lucida Grande, Lucida Sans, Arial, sans-serif; font-size: 12px; }
+
+#divAdvancedSearch
+{
+    display:none;
+}
+
+ui-jqgrid-title
+{
+    font-size:12px;
+}
+
+input 
+{
+   border:solid 1px #79B7E7;
+}
+
+#divAdvancedSearch input
+{
+    width:110px;
+    border:solid 1px #79B7E7;
+    
+}
+
+#divAdvancedSearch select
+{
+    width:115px;
+    border:solid 1px #79B7E7;
+}
+
+#divAdvancedSearch .selectdate
+{
+     width:110px;  
+     border:solid 1px #79B7E7; 
+}
+
+
+#divSearch input
+{
+    width:200px;
+    border:solid 1px #79B7E7;
+}
+
+.defaultText
+{
+    color:#AAA;
+    /*font-size:8px;*/
+}
+
+
+#toExcel
+{
+    right:10px;
+    position:absolute;
+    
+}
+
+#checkCode
+{
+    width:50px;
+}
+
+#divAdvancedSearch table
+{
+    border-collapse : collapse ;
+    table-layout:fixed;
+    /*width:450px;*/
+    border:#a6c9e2 1px solid; 
+}
+#divAdvancedSearch td
+{
+    border:#a6c9e2 1px solid; 
+   /* border-color:#a6c9e2; */
+}
+
+
+/*jqueryUI使用em为单位，导致按钮空隙太大 */
+.ui-dialog .ui-dialog-buttonpane button 
+{
+    margin:0 5px;
+}
+span.ui-button-text
+{
+    padding:2px 3px 1px 3px !important;
+}
+
+#divSearch
+{
+    padding:2px 10px;
+    border-bottom:1px solid #9CCFEF;
+}
+
